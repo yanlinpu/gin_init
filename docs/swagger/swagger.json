@@ -1,0 +1,104 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "{{.Description}}",
+        "title": "{{.Title}}",
+        "contact": {},
+        "license": {},
+        "version": "{{.Version}}"
+    },
+    "host": "{{.Host}}",
+    "basePath": "{{.BasePath}}",
+    "paths": {
+        "/api/v1/get-test": {
+            "get": {
+                "description": "Get请求测试",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "test"
+                ],
+                "summary": "Get请求测试",
+                "parameters": [
+                    {
+                        "description": "page required",
+                        "name": "page",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "description": "pageSize required",
+                        "name": "pageSize",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\":200,\"data\":{\"page\":1,\"pageSize\":20},\"msg\":\"success\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "{\"code\":400,\"data\":\"Key: 'Params.PageSize' Error:Field validation for 'PageSize' failed on the 'required' tag\",\"msg\":\"params error\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "405": {
+                        "description": "{\"code\":405,\"data\":null,\"msg\":\"每页不能超过50个\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/post-test": {
+            "post": {
+                "description": "POST请求测试",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "test"
+                ],
+                "summary": "POST请求测试",
+                "responses": {
+                    "200": {
+                        "description": "{\"code\":200,\"data\":{\"page\":1,\"pageSize\":20},\"msg\":\"success\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "{\"code\":400,\"data\":\"Key: 'Params.PageSize' Error:Field validation for 'PageSize' failed on the 'required' tag\",\"msg\":\"params error\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "405": {
+                        "description": "{\"code\":405,\"data\":null,\"msg\":\"每页不能超过50个\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

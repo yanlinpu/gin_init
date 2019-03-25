@@ -1,0 +1,71 @@
+basePath: '{{.BasePath}}'
+host: '{{.Host}}'
+info:
+  contact: {}
+  description: '{{.Description}}'
+  license: {}
+  title: '{{.Title}}'
+  version: '{{.Version}}'
+paths:
+  /api/v1/get-test:
+    get:
+      consumes:
+      - application/json
+      description: Get请求测试
+      parameters:
+      - description: page required
+        in: body
+        name: page
+        required: true
+        schema:
+          type: object
+      - description: pageSize required
+        in: body
+        name: pageSize
+        required: true
+        schema:
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{"page":1,"pageSize":20},"msg":"success"}'
+          schema:
+            type: string
+        "400":
+          description: '{"code":400,"data":"Key: ''Params.PageSize'' Error:Field validation
+            for ''PageSize'' failed on the ''required'' tag","msg":"params error"}'
+          schema:
+            type: string
+        "405":
+          description: '{"code":405,"data":null,"msg":"每页不能超过50个"}'
+          schema:
+            type: string
+      summary: Get请求测试
+      tags:
+      - test
+  /api/v1/post-test:
+    post:
+      consumes:
+      - application/json
+      description: POST请求测试
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{"page":1,"pageSize":20},"msg":"success"}'
+          schema:
+            type: string
+        "400":
+          description: '{"code":400,"data":"Key: ''Params.PageSize'' Error:Field validation
+            for ''PageSize'' failed on the ''required'' tag","msg":"params error"}'
+          schema:
+            type: string
+        "405":
+          description: '{"code":405,"data":null,"msg":"每页不能超过50个"}'
+          schema:
+            type: string
+      summary: POST请求测试
+      tags:
+      - test
+swagger: "2.0"
