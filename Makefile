@@ -50,6 +50,14 @@ clean:
 swag-md:
 	swagger-markdown -i docs/swagger/swagger.yaml
 
+# make changePro name="myAbc"
+changePro:
+ifeq ("$(name)", "")
+	@echo "name can not be null, like myAbc"
+else
+	sed -i '' -e "s/gin_init/$(name)/g" `grep --exclude-dir=vendor gin_init -rl ./`
+endif
+
 # api.1
 ApiTest:
 	curl -X GET "$(GINURL)get-test?page=1&pageSize=20" \
