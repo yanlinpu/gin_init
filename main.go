@@ -22,6 +22,11 @@ func init() {
 	// opentracing.SetGlobalTracer(tracer)
 }
 
+// @title 服务
+// @version 1.0
+// @description 服务，以下为所有api接口。
+// @host www.baidu.com
+// @BasePath /v1
 func main() {
 	if !setting.AppSetting.Debug {
 		gin.SetMode(gin.ReleaseMode)
