@@ -55,7 +55,7 @@ changePro:
 ifeq ("$(name)", "")
 	@echo "name can not be null, like myAbc"
 else
-	sed -i '' -e "s/gin_init/$(name)/g" `grep --exclude-dir=vendor gin_init -rl ./`
+	sed -i '' -e "s/gin_init/$(name)/g" `grep --exclude-dir=.git --exclude-dir=vendor gin_init -rl ./`
 endif
 
 # api.1
