@@ -26,7 +26,14 @@ func Setup() {
 
 	db, err = gorm.Open("mysql", source)
 	if err != nil {
+		db.AddError(err)
 		logger.Error("db error", err.Error())
+	}
+
+	err = db.DB().Ping()
+	if err != nil {
+		db.AddError(err)
+		logger.Error("db connect error!", err.Error())
 	}
 
 	if os.Getenv("GINENV") != "production" {

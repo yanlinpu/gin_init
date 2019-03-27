@@ -3,6 +3,7 @@
 
 # 全局环境变量设置
 export GINENV=development
+export HEALTHURL=http://localhost:5555/health/check
 export GINURL=http://localhost:5555/api/v1/
 all: clean
 
@@ -59,7 +60,12 @@ else
 endif
 
 # api.1
-ApiTest:
+ApiHealthCheck:
+	curl -X GET "$(HEALTHURL)" \
+	-H "accept: application/json" \
+	-H "Content-Type: application/json" \
+
+ApiGet:
 	curl -X GET "$(GINURL)get-test?page=1&pageSize=20" \
 	-H "accept: application/json" \
 	-H "Content-Type: application/json" \

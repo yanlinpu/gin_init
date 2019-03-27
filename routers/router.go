@@ -1,6 +1,7 @@
 package routers
 
 import (
+	healthCtrl "gin_init/api/health"
 	apiV1 "gin_init/api/v1"
 	_ "gin_init/docs"
 	"gin_init/middleware/ps"
@@ -21,7 +22,11 @@ func InitRouter() *gin.Engine {
 		r.Use(gin.Logger())
 		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	}
-
+	// check := r.Group("health")
+	// {
+	// 	check.GET("check", healthCtrl.HealthCheck)
+	// }
+	r.GET("health/check", healthCtrl.HealthCheck)
 	gV1 := r.Group("api/v1")
 	{
 		gV1.GET("get-test", ps.PageSizeCheck(), apiV1.GetParams)

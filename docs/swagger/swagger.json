@@ -1,14 +1,14 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "{{.Description}}",
-        "title": "{{.Title}}",
+        "description": "服务，以下为所有api接口。",
+        "title": "服务",
         "contact": {},
         "license": {},
-        "version": "{{.Version}}"
+        "version": "1.0"
     },
-    "host": "{{.Host}}",
-    "basePath": "{{.BasePath}}",
+    "host": "www.baidu.com",
+    "basePath": "/v1",
     "paths": {
         "/api/v1/get-test": {
             "get": {
